@@ -74,7 +74,7 @@ local function GenerateNextPeiceOfTerrain()
         elseif number == 3 then
             CurrentState = '_'
         elseif number == 4 then
-            CurrentState == '\\'
+            CurrentState = '\\'
         end
     end
 end
