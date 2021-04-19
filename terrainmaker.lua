@@ -55,6 +55,28 @@ local function GenerateNextPeiceOfTerrain()
             CurrentState = '_'
         end
     end
+    if lastState == '~' then
+        local number = math.random(1,3)
+        if number == 1 then 
+            CurrentState = '~'
+        elseif number == 2 then 
+            CurrentState = '~'
+        elseif number == 3 then
+            CurrentState = '_'
+        end
+    end
+    if lastState == '|' then
+        local number = math.random(1,4)
+        if number == 1 then 
+            CurrentState = '|'
+        elseif number == 2 then 
+            CurrentState = '|'
+        elseif number == 3 then
+            CurrentState = '_'
+        elseif number == 4 then
+            CurrentState == '\\'
+        end
+    end
 end
 
 local function temp()
