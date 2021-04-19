@@ -1,5 +1,6 @@
 -- A simple terrain maker
 -- Mwgie#8873
+-- Version AT1
 
 local terrainnumber = 0
 
