@@ -1,6 +1,6 @@
 -- A simple terrain maker
 -- Mwgie#8873
--- Version AT2
+-- Version AT3
 
 
 math.randomseed(os.time())
@@ -50,9 +50,7 @@ local function GenerateNextPeiceOfTerrainFromHillUp()
     end
 
     local number = math.random(1,4)
-    if number == 1 then 
-        CurrentState = hillUp
-    elseif number == 2 then 
+    if number == 1 or number == 2 then 
         CurrentState = hillUp
     elseif number == 3 then
         CurrentState = hillDown
@@ -66,9 +64,7 @@ local function GenerateNextPeiceOfTerrainFromHillDown()
     AddNewLineToBottomOfTerrain()
     
     local number = math.random(1,3)
-     if number == 1 then 
-        CurrentState = hillDown
-     elseif number == 2 then 
+     if number == 1 or number == 2 then 
         CurrentState = hillDown
      elseif number == 3 then
         CurrentState = '_'
@@ -78,9 +74,7 @@ end
 local function GenerateNextPeiceOfTerrainFromWater()
 
     local number = math.random(1,3)
-    if number == 1 then 
-        CurrentState = '~'
-    elseif number == 2 then 
+    if number == 1 or number == 2 then 
         CurrentState = '~'
     elseif number == 3 then
         CurrentState = '_'
@@ -92,9 +86,7 @@ local function GenerateNextPeiceOfTerrainFromCliff()
     AddNewLineToBottomOfTerrain()
 
     local number = math.random(1,4)
-    if number == 1 then 
-        CurrentState = '|'
-    elseif number == 2 then 
+    if number == 1 or number == 2 then 
         CurrentState = '|'
     elseif number == 3 then
         CurrentState = '_'
@@ -147,7 +139,6 @@ end
 print('How much terrain do you want to generate?')
 
 local terrainAmount = io.read()
-
 
 for i = 1, tonumber(terrainAmount) do
 
