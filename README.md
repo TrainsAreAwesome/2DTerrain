@@ -9,6 +9,6 @@ use this if you want its bugged alot (hills are very broken) but if you use this
 
  [Windows](https://clevercomputers.ie/download-lua)
 
- [Unix](https://www.lua.org/download) (Requires building!!!)
+ [Unix](https://www.lua.org/download.html) (Requires building!!!)
 
 Version AT3 (Alpha Test 3)
