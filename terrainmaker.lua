@@ -1,6 +1,6 @@
 -- A simple terrain maker
 -- Mwgie#8873
--- Version AT4
+-- Version AT5
 
 
 math.randomseed(os.time())
