@@ -10,43 +10,53 @@ local terrainYPosition = 1
 local lastState = '_'
 local CurrentState = '_'
 local terrain = {
-''
+    ''
 }
-local hillUp = [[/
-]]
-local hillDown = '\\'
-local function hillDownLeveling()
+local hillUp = '/'
 
+local hillDown = '\\'
+
+local function UpdateXPositionOnString(xpos, ypos)
+    -- if the length of the string is not equal to the xpos then
+        -- take the xpos and minus off the length of the current string
+            -- if the difference is more than 0 then
+                -- add the amount of spaces equal to the distance
+    if not #terrain[ypos] == xpos then
+        local difference = xpos - #terrain[ypos]
+        if difference > 0 then
+            local spacesNeeded = string.rep(' ', difference)
+            terrain[ypos] = terrain[ypos] .. spacesNeeded
+        end
+    end
+end
+
+local function hillDownLeveling()
+    
     if terrainYPosition == #terrain then
         table.insert(terrain, string.rep(' ', terrainXPosition))
     end
-    
-    terrainYPosition = terrainYPosition - 1
-
-    if terrainYPosition == 0 then
-        terrainYPosition = 1 
-    end
-
+    terrainYPosition = terrainYPosition + 1
+    UpdateXPositionOnString(terrainXPosition, terrainYPosition)
 end
 
 local function hillUpLeveling()
     
     if terrainYPosition == 1 then
         table.insert(terrain, 1, string.rep(' ', terrainXPosition))
+    else
+        terrainYPosition = terrainYPosition - 1
     end
-    
-    terrainYPosition = terrainYPosition + 1
+    UpdateXPositionOnString(terrainXPosition, terrainYPosition)
 end
 
 local function AddToTerrain()
-    
     if CurrentState == hillUp then 
         hillUpLeveling()
     elseif CurrentState == hillDown or CurrentState == '|' then
         hillDownLeveling()
     end
     terrain[terrainYPosition] = terrain[terrainYPosition] .. CurrentState
-    print(terrainXPosition)
+
     terrainXPosition = terrainXPosition + 1
     lastState = CurrentState
     CurrentState = ''
