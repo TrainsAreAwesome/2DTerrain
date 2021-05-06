@@ -166,3 +166,5 @@ end
 for i = 1, #terrain do
     print(terrain[i])
 end
+
+-- NOTE: Add a pause statment here (I didnt because you might be on another OS)
