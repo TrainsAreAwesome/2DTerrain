@@ -1,7 +1,9 @@
 -- A simple terrain maker
 -- Mwgie#8873
--- Version AT5
+-- Version AT6
 
+-- Features to be added (OOS):
+-- Hills going up and down
 
 math.randomseed(os.time())
 
@@ -36,7 +38,7 @@ local function hillDownLeveling()
         table.insert(terrain, string.rep(' ', terrainXPosition))
     end
     terrainYPosition = terrainYPosition + 1
-    UpdateXPositionOnString(terrainXPosition, terrainYPosition)
+    
 end
 
 local function hillUpLeveling()
@@ -57,13 +59,15 @@ local function AddToTerrain()
     end
     terrain[terrainYPosition] = terrain[terrainYPosition] .. CurrentState
 
+    if CurrentState ~= '|' then
     terrainXPosition = terrainXPosition + 1
+    end
     lastState = CurrentState
     CurrentState = ''
 end
 
 local function GenerateNextPeiceOfTerrainFromFlat()
-    local number = math.random(1,4)
+    local number = math.random(1,5)
     if number == 1 then 
         CurrentState = '_'
     elseif number == 2 then 
@@ -72,6 +76,9 @@ local function GenerateNextPeiceOfTerrainFromFlat()
         CurrentState = '|'
     elseif number == 4 then 
         CurrentState = '~'
+    elseif number == 5 then
+        CurrentState = hillDown
+        UpdateXPositionOnString(terrainXPosition, terrainYPosition)
     end
 end
 
@@ -81,6 +88,7 @@ local function GenerateNextPeiceOfTerrainFromHillUp()
         CurrentState = hillUp
     elseif number == 3 then
         CurrentState = hillDown
+        UpdateXPositionOnString(terrainXPosition, terrainYPosition)
     else 
         CurrentState = '_'
     end 
@@ -91,7 +99,8 @@ local function GenerateNextPeiceOfTerrainFromHillDown()
     local number = math.random(1,3)
      if number == 1 or number == 2 then 
         CurrentState = hillDown
-     elseif number == 3 then
+        UpdateXPositionOnString(terrainXPosition, terrainYPosition) 
+    elseif number == 3 then
         CurrentState = '_'
      end
 end
@@ -114,7 +123,8 @@ local function GenerateNextPeiceOfTerrainFromCliff()
     elseif number == 3 then
         CurrentState = '_'
     elseif number == 4 then
-        CurrentState = '\\'
+        CurrentState = hillDown
+        UpdateXPositionOnString(terrainXPosition, terrainYPosition)
     end
 end
 
@@ -138,8 +148,6 @@ local function GenerateNextPeiceOfTerrain()
     if lastState == '|' then
         GenerateNextPeiceOfTerrainFromCliff()
     end
-
-    terrainXPosition = terrainXPosition + 1
 
 end
 
