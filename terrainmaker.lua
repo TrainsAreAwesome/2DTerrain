@@ -3,14 +3,14 @@
 -- Version AT6
 
 -- Features to be added (OOS):
--- Hills going up and down
+-- Cliffs going up and down
 
 math.randomseed(os.time())
 
 local terrainXPosition = 1
 local terrainYPosition = 1
 local lastState = '_'
-local CurrentState = '_'
+local CurrentState = ''
 local terrain = {
     ''
 }
