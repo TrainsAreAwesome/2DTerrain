@@ -3,16 +3,12 @@
 -- Version AT6
 -- Logging:
 
-local logToAFile = true
+local logToAFile = false
 
 -- Features to be added (OOS):
 -- Cliffs going up and down
 
 local logTable = {
-
-
-
-
 
 }
 
